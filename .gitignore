@@ -1,0 +1,41 @@
+# ---- large data (not distributed; see docs/DEPLOYMENT.md for how to fetch) ----
+data/
+*.csv
+*.pkl
+
+# ---- virtual environments / build artifacts ----
+.venv/
+venv/
+env/
+*.egg-info/
+build/
+dist/
+*.tar.gz
+
+# ---- python caches ----
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# ---- confidential platform material (Fujitsu QSC participant agreement) ----
+docs_qsc2025-26_en/
+qarp-v0.4.3-docs/
+pytket-tenet-doc/
+QSC_FX700_QARP_Setup_Guide.md
+fujitsu_quantum_simulator2.md
+
+# ---- private / PII (never publish) ----
+Fujitsu QSC User Account.xlsx
+*.xlsx
+ssh-keys/
+*.pem
+id_ed25519*
+fujitsu-convo.txt
+
+# ---- os / editor ----
+.DS_Store
+*.swp
+.idea/
+.vscode/

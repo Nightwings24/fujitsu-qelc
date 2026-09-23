@@ -1,0 +1,10 @@
+#!/bin/bash
+#SBATCH -p Batch
+#SBATCH -N 1
+#SBATCH -t 06:00:00
+#SBATCH -J qelc_g1
+#SBATCH -o out-g1-%j.log
+
+cd "$SLURM_SUBMIT_DIR"
+mkdir -p results params
+mpirun -N 1 -npernode 1 -n 1 ./job.sh python -u run_grover_qvi.py --k-min 8 --k-max 15 --shots 2000 --out results/g1.json

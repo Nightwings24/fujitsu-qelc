@@ -1,0 +1,10 @@
+#!/bin/bash
+#SBATCH -p Batch
+#SBATCH -N 8
+#SBATCH -t 06:00:00
+#SBATCH -J qelc_e7
+#SBATCH -o out-e7-%j.log
+
+cd "$SLURM_SUBMIT_DIR"
+mkdir -p results params
+mpirun -N 1 -npernode 1 -n 8 ./job.sh python -u run_qaoa_qarp.py --instance instances_usdc/E7_n33.json --seed 0 --p 1 --maxiter 10 --shots 2000 --init-params params/E4_n30_best.json --out results/e7_seed0.json

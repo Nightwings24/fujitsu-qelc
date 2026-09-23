@@ -1,0 +1,10 @@
+#!/bin/bash
+#SBATCH -p Batch
+#SBATCH -N 1
+#SBATCH -t 00:30:00
+#SBATCH -J qelc_e0
+#SBATCH -o out-e0-%j.log
+
+cd "$SLURM_SUBMIT_DIR"
+mkdir -p results params
+mpirun -N 1 -npernode 1 -n 1 ./job.sh python -u validate_qarp_energy.py --instance instances_usdc/E0_n16.json

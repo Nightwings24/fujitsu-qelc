@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qelc"
+version = "2.0.0"
+description = "Quantum-Enhanced Liquidity Clearinghouse: QAOA cycle netting for the Fujitsu Quantum Simulator Challenge 2026"
+requires-python = ">=3.10"
+# Core deps are exactly what the FX700 (QARP) venv already provides
+# (numpy/networkx/scipy). Everything only needed for LOCAL CSV work or the
+# local qulacs runtime lives in extras, so `pip install -e qelc/` on the
+# cluster pulls in nothing the QARP venv doesn't already have.
+dependencies = [
+    "numpy>=1.24",
+    "networkx>=3.0",
+    "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+# local CSV ETL + local qulacs runtime (NOT installed into the QARP venv)
+local = ["qulacs>=0.6", "pandas>=2.0", "pyarrow>=14.0"]
+milp = ["pulp>=2.7"]
+dev = ["pytest>=7.0", "matplotlib>=3.7", "pandas>=2.0", "pyarrow>=14.0"]
+
+[tool.setuptools.packages.find]
+include = ["qelc*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
